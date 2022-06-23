@@ -126,14 +126,14 @@ export class LibrosComponent implements OnInit {
       );
       return;
     }
-    this.submitted = false;
+    this.submitted = true;
     this.FormLibro.markAsUntouched();
     this.BuscarPorId(Item, 'M');
   }
 
   // grabar tanto altas como modificaciones
   Grabar() {
-    this.submitted = true;
+    this.submitted = false;
     // verificar que los validadores esten OK
     if (this.FormLibro.invalid) {
       return;
