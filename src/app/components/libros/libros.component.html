@@ -34,7 +34,7 @@
   
     <hr /> -->
 
-    <!-- Botones 
+<!-- Botones 
     <div class="row justify-content-center botones">
       <button
         type="button"
@@ -100,7 +100,7 @@
     </tbody>
   </table>
 
-  <!-- Paginador-->
+  <!-- Paginador
   <div class="paginador">
     <div class="row">
       <div class="col">
@@ -122,148 +122,149 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
-<!--No se encontraron registros-->
-<div
-  class="alert alert-info mensajesAlert"
-  *ngIf="AccionABMC == 'L' && Items?.length == 0"
->
-  <i class="fa fa-exclamation-sign"></i>{{ Mensajes['SD'] }}
-  <!-- texto: No se encontraron registros -->
-</div>
-
-<!-- Registro en Alta,Modificacion y Consulta -->
-<!--Modifique el form y el nombre por titulo-->
-<form name="FormLibro" [formGroup]="FormLibro" *ngIf="AccionABMC != 'L'">
-  <div class="container-fluid">
-    <fieldset [disabled]="AccionABMC === 'C'">
-      <!--campo Titulo-->
-      <div class="row">
-        <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label" for="Titulo"
-            >Titulo<span class="text-danger">*</span>:</label
-          >
-        </div>
-        <div class="col-sm-8 col-md-6">
-          <input
-            type="text"
-            class="form-control"
-            formControlName="Titulo"
-            [ngClass]="{
-              'is-invalid':
-                (FormLibro.controls['Titulo'].touched || submitted) &&
-                FormLibro.controls['Titulo'].errors
-            }"
-          />
-
-          <div
-            class="validacion"
-            *ngIf="
-              (FormLibro.controls['Titulo'].touched || submitted) &&
-              FormLibro.controls['Titulo'].hasError('required')
-            "
-          >
-            Dato requerido.
-          </div>
-          <div
-            class="validacion"
-            *ngIf="
-              (FormLibro.controls['Titulo'].touched || submitted) &&
-              (FormLibro.controls['Titulo'].hasError('minlength') ||
-                FormLibro.controls['Titulo'].hasError('maxlength'))
-            "
-          >
-            Dato texto, hasta 100 caracteres.
-          </div>
-        </div>
-      </div>
-
-      <!--campo stock-->
-      <div class="row">
-        <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label" for="Stock">
-            Stock<span class="text-danger">*</span>:
-          </label>
-        </div>
-        <div class="col-sm-8 col-md-6">
-          <input
-            type="text"
-            name="Stock"
-            class="form-control"
-            formControlName="Stock"
-            [ngClass]="{
-              'is-invalid':
-                (FormLibro.controls['Stock'].touched || submitted) &&
-                FormLibro.controls['Stock'].errors
-            }"
-          />
-          <div
-            class="validacion"
-            *ngIf="
-              (FormLibro.controls['Stock'].touched || submitted) &&
-              FormLibro.controls['Stock'].hasError('required')
-            "
-          >
-            Dato requerido.
-          </div>
-          <div
-            class="validacion"
-            *ngIf="
-              (FormLibro.controls['Stock'].touched || submitted) &&
-              FormLibro.controls['Stock'].hasError('pattern')
-            "
-          >
-            Dato numérico, 1 a 7 dígitos.
-          </div>
-        </div>
-      </div>
-
-      <!--campo activo-->
-      <div class="row">
-        <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label" for="Activo">Activo:</label>
-        </div>
-        <div class="col-sm-8 col-md-6">
-          <!-- ref?? disabled html no fucniona en reactive forms? -->
-          <select
-            class="form-control"
-            name="Activo"
-            formControlName="Activo"
-            [disabled]="true"
-          >
-            <option *ngFor="let opt of OpcionesActivo" [ngValue]="opt.Id">
-              ‌{{ opt.Nombre }}
-            </option>
-          </select>
-        </div>
-      </div>
-    </fieldset>
-
-    <!-- Botones Grabar, Cancelar/Volver' -->
-    <hr />
-    <div class="row justify-content-center botones">
-      <button
-        type="button"
-        *ngIf="AccionABMC !== 'C'"
-        class="btn btn-primary"
-        (click)="Grabar()"
-      >
-        <i class="fa fa-check"></i> Grabar
-      </button>
-      &nbsp;
-      <button type="button" class="btn btn-warning" (click)="Volver()">
-        <i class="fa fa-undo"></i>
-        {{ AccionABMC == 'C' ? 'Volver' : 'Cancelar' }}
-      </button>
-    </div>
-
-    <!--texto: Revisar los datos ingresados...-->
-    <div
-      *ngIf="submitted && FormLibro.invalid"
-      class="row alert alert-danger mensajesAlert"
-    >
-      <i class="fa fa-exclamation-sign"></i>{{ Mensajes['RD'] }}
-    </div>
+  <!--No se encontraron registros-->
+  <div
+    class="alert alert-info mensajesAlert"
+    *ngIf="AccionABMC == 'L' && Items?.length == 0"
+  >
+    <i class="fa fa-exclamation-sign"></i>{{ Mensajes['SD'] }}
+    <!-- texto: No se encontraron registros -->
   </div>
-</form>
+
+  <!-- Registro en Alta,Modificacion y Consulta -->
+  <!--Modifique el form y el nombre por titulo-->
+  <form name="FormLibro" [formGroup]="FormLibro" *ngIf="AccionABMC != 'L'">
+    <div class="container-fluid">
+      <fieldset [disabled]="AccionABMC === 'C'">
+        <!--campo Titulo-->
+        <div class="row">
+          <div class="col-sm-4 col-md-3 offset-md-1">
+            <label class="col-form-label" for="Titulo"
+              >Titulo<span class="text-danger">*</span>:</label
+            >
+          </div>
+          <div class="col-sm-8 col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="Titulo"
+              [ngClass]="{
+                'is-invalid':
+                  (FormLibro.controls['Titulo'].touched || submitted) &&
+                  FormLibro.controls['Titulo'].errors
+              }"
+            />
+
+            <div
+              class="validacion"
+              *ngIf="
+                (FormLibro.controls['Titulo'].touched || submitted) &&
+                FormLibro.controls['Titulo'].hasError('required')
+              "
+            >
+              Dato requerido.
+            </div>
+            <div
+              class="validacion"
+              *ngIf="
+                (FormLibro.controls['Titulo'].touched || submitted) &&
+                (FormLibro.controls['Titulo'].hasError('minlength') ||
+                  FormLibro.controls['Titulo'].hasError('maxlength'))
+              "
+            >
+              Dato texto, hasta 100 caracteres.
+            </div>
+          </div>
+        </div>
+
+        <!--campo stock-->
+        <div class="row">
+          <div class="col-sm-4 col-md-3 offset-md-1">
+            <label class="col-form-label" for="Stock">
+              Stock<span class="text-danger">*</span>:
+            </label>
+          </div>
+          <div class="col-sm-8 col-md-6">
+            <input
+              type="text"
+              name="Stock"
+              class="form-control"
+              formControlName="Stock"
+              [ngClass]="{
+                'is-invalid':
+                  (FormLibro.controls['Stock'].touched || submitted) &&
+                  FormLibro.controls['Stock'].errors
+              }"
+            />
+            <div
+              class="validacion"
+              *ngIf="
+                (FormLibro.controls['Stock'].touched || submitted) &&
+                FormLibro.controls['Stock'].hasError('required')
+              "
+            >
+              Dato requerido.
+            </div>
+            <div
+              class="validacion"
+              *ngIf="
+                (FormLibro.controls['Stock'].touched || submitted) &&
+                FormLibro.controls['Stock'].hasError('pattern')
+              "
+            >
+              Dato numérico, 1 a 7 dígitos.
+            </div>
+          </div>
+        </div>
+
+        <!--campo activo-->
+        <div class="row">
+          <div class="col-sm-4 col-md-3 offset-md-1">
+            <label class="col-form-label" for="Activo">Activo:</label>
+          </div>
+          <div class="col-sm-8 col-md-6">
+            <!-- ref?? disabled html no fucniona en reactive forms? -->
+            <select
+              class="form-control"
+              name="Activo"
+              formControlName="Activo"
+              [disabled]="true"
+            >
+              <option *ngFor="let opt of OpcionesActivo" [ngValue]="opt.Id">
+                ‌{{ opt.Nombre }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Botones Grabar, Cancelar/Volver' -->
+      <hr />
+      <div class="row justify-content-center botones">
+        <button
+          type="button"
+          *ngIf="AccionABMC !== 'C'"
+          class="btn btn-primary"
+          (click)="Grabar()"
+        >
+          <i class="fa fa-check"></i> Grabar
+        </button>
+        &nbsp;
+        <button type="button" class="btn btn-warning" (click)="Volver()">
+          <i class="fa fa-undo"></i>
+          {{ AccionABMC == 'C' ? 'Volver' : 'Cancelar' }}
+        </button>
+      </div>
+
+      <!--texto: Revisar los datos ingresados...-->
+      <div
+        *ngIf="submitted && FormLibro.invalid"
+        class="row alert alert-danger mensajesAlert"
+      >
+        <i class="fa fa-exclamation-sign"></i>{{ Mensajes['RD'] }}
+      </div>
+    </div>
+  </form>
+</div>
