@@ -73,7 +73,9 @@ export class LibrosComponent implements OnInit {
     private modalDialogService: ModalDialogService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.Buscar()
+  }
 
   Agregar() {
     this.AccionABMC = 'A';
@@ -88,11 +90,10 @@ export class LibrosComponent implements OnInit {
     this.LibrosService.get(
       //Modifique
       this.FormBusqueda.value.Titulo,
-      this.FormBusqueda.value.Activo,
-      this.Pagina
+      //Modifique
     ).subscribe((res: any) => {
-      this.Items = res.Items;
-      this.RegistrosTotal = res.RegistrosTotal;
+      this.Items = res;
+     
     });
   }
 

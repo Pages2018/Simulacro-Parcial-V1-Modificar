@@ -11,19 +11,15 @@ import { Libro } from '../models/libro';
 export class LibrosService {
   resourceUrl: string;
   constructor(private httpClient: HttpClient) {
-    //this.resourceUrl = environment.ConexionWebApiProxy + 'Articulos/';
-    this.resourceUrl = 'https://pav2.azurewebsites.net/api/libros/';
+    this.resourceUrl = environment.ConexionWebApiProxy + 'Libros/';
+    //this.resourceUrl = 'https://pav2.azurewebsites.net/api/libros/';
   }
 
-  get(Nombre: string, Activo: boolean, Pagina: number) {
+  get(Titulo: string) {
     let params = new HttpParams();
-    if (Nombre != null) {
-      params = params.append('Nombre', Nombre);
+    if (Titulo != null) {
+      params = params.append('Nombre', Titulo);
     }
-    if (Activo != null) {
-      params = params.append('Activo', Activo.toString());
-    }
-    params = params.append('Pagina', Pagina.toString());
     return this.httpClient.get(this.resourceUrl, { params: params });
   }
   getAll() {
