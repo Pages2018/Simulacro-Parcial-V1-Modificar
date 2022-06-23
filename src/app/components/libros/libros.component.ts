@@ -9,7 +9,7 @@ import { ModalDialogService } from '../../services/modal-dialog.service';
 
 //Modificar el form que haya por el form que necesitas y despues hacerlo en el html
 @Component({
-  selector: 'app-libro',
+  selector: 'app-libros',
   templateUrl: './libros.component.html',
   styleUrls: ['./libros.component.css'],
 })
