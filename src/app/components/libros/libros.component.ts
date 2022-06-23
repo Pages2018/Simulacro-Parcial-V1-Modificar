@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 //Ejemplo
 import { Libro } from '../../models/libro';
-import { ArticuloFamilia } from '../../models/articulo-familia';
 //Ejemplo
 import { LibrosService } from '../../services/libros.service';
 
