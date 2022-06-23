@@ -132,13 +132,14 @@
 </div>
 
 <!-- Registro en Alta,Modificacion y Consulta -->
-<form name="FormRegistro" [formGroup]="FormRegistro" *ngIf="AccionABMC != 'L'">
+<!--Modifique el form y el nombre por titulo-->
+<form name="FormLibro" [formGroup]="FormLibro" *ngIf="AccionABMC != 'L'">
   <div class="container-fluid">
     <fieldset [disabled]="AccionABMC === 'C'">
       <!--campo Titulo-->
       <div class="row">
         <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label" for="Nombre"
+          <label class="col-form-label" for="Titulo"
             >Titulo<span class="text-danger">*</span>:</label
           >
         </div>
@@ -149,16 +150,16 @@
             formControlName="Titulo"
             [ngClass]="{
               'is-invalid':
-                (FormRegistro.controls['Titulo'].touched || submitted) &&
-                FormRegistro.controls['Titulo'].errors
+                (FormLibro.controls['Titulo'].touched || submitted) &&
+                FormLibro.controls['Titulo'].errors
             }"
           />
 
           <div
             class="validacion"
             *ngIf="
-              (FormRegistro.controls['Titulo'].touched || submitted) &&
-              FormRegistro.controls['Titulo'].hasError('required')
+              (FormLibro.controls['Titulo'].touched || submitted) &&
+              FormLibro.controls['Titulo'].hasError('required')
             "
           >
             Dato requerido.
@@ -166,9 +167,9 @@
           <div
             class="validacion"
             *ngIf="
-              (FormRegistro.controls['Titulo'].touched || submitted) &&
-              (FormRegistro.controls['Titulo'].hasError('minlength') ||
-                FormRegistro.controls['Titulo'].hasError('maxlength'))
+              (FormLibro.controls['Titulo'].touched || submitted) &&
+              (FormLibro.controls['Titulo'].hasError('minlength') ||
+                FormLibro.controls['Titulo'].hasError('maxlength'))
             "
           >
             Dato texto, hasta 100 caracteres.
@@ -191,15 +192,15 @@
             formControlName="Stock"
             [ngClass]="{
               'is-invalid':
-                (FormRegistro.controls['Stock'].touched || submitted) &&
-                FormRegistro.controls['Stock'].errors
+                (FormLibro.controls['Stock'].touched || submitted) &&
+                FormLibro.controls['Stock'].errors
             }"
           />
           <div
             class="validacion"
             *ngIf="
-              (FormRegistro.controls['Stock'].touched || submitted) &&
-              FormRegistro.controls['Stock'].hasError('required')
+              (FormLibro.controls['Stock'].touched || submitted) &&
+              FormLibro.controls['Stock'].hasError('required')
             "
           >
             Dato requerido.
@@ -207,8 +208,8 @@
           <div
             class="validacion"
             *ngIf="
-              (FormRegistro.controls['Stock'].touched || submitted) &&
-              FormRegistro.controls['Stock'].hasError('pattern')
+              (FormLibro.controls['Stock'].touched || submitted) &&
+              FormLibro.controls['Stock'].hasError('pattern')
             "
           >
             Dato numérico, 1 a 7 dígitos.
@@ -257,7 +258,7 @@
 
     <!--texto: Revisar los datos ingresados...-->
     <div
-      *ngIf="submitted && FormRegistro.invalid"
+      *ngIf="submitted && FormLibro.invalid"
       class="row alert alert-danger mensajesAlert"
     >
       <i class="fa fa-exclamation-sign"></i>{{ Mensajes['RD'] }}

@@ -7,6 +7,7 @@ import { LibrosService } from '../../services/libros.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalDialogService } from '../../services/modal-dialog.service';
 
+//Modificar el form que haya por el form que necesitas y despues hacerlo en el html
 @Component({
   selector: 'app-libro',
   templateUrl: './libros.component.html',
@@ -45,7 +46,7 @@ export class LibrosComponent implements OnInit {
     Activo: new FormControl(null),
   });
 
-  FormRegistro = new FormGroup({
+  FormLibro = new FormGroup({
     //Modifique
     IdLibro: new FormControl(0),
     //Modifique
@@ -77,7 +78,7 @@ export class LibrosComponent implements OnInit {
   Agregar() {
     this.AccionABMC = 'A';
     //Modifique
-    this.FormRegistro.reset({ Activo: true, IdLibro: 0 });
+    this.FormLibro.reset({ Activo: true, IdLibro: 0 });
     this.submitted = false;
   }
 
@@ -101,11 +102,11 @@ export class LibrosComponent implements OnInit {
 
     //Modifique
     this.LibrosService.getById(Item.IdLibro).subscribe((res: any) => {
-      this.FormRegistro.patchValue(res);
+      this.FormLibro.patchValue(res);
 
       //formatear fecha de  ISO 8061 a string dd/MM/yyyy
       var arrFecha = res.FechaAlta.substr(0, 10).split('-');
-      this.FormRegistro.controls.FechaAlta.patchValue(
+      this.FormLibro.controls.FechaAlta.patchValue(
         arrFecha[2] + '/' + arrFecha[1] + '/' + arrFecha[0]
       );
 
@@ -126,7 +127,7 @@ export class LibrosComponent implements OnInit {
       return;
     }
     this.submitted = false;
-    this.FormRegistro.markAsUntouched();
+    this.FormLibro.markAsUntouched();
     this.BuscarPorId(Item, 'M');
   }
 
@@ -134,12 +135,12 @@ export class LibrosComponent implements OnInit {
   Grabar() {
     this.submitted = true;
     // verificar que los validadores esten OK
-    if (this.FormRegistro.invalid) {
+    if (this.FormLibro.invalid) {
       return;
     }
 
     //hacemos una copia de los datos del formulario, para modificar la fecha y luego enviarlo al servidor
-    const itemCopy = { ...this.FormRegistro.value };
+    const itemCopy = { ...this.FormLibro.value };
     //Agregar esto!!!!!
     itemCopy.IdLibro = 0;
 
