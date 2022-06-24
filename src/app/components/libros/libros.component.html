@@ -72,13 +72,13 @@
         <td class="text-right">{{ Item.Stock }}</td>
         <td>{{ Item.Activo ? 'SI' : 'NO' }}</td>
         <td class="text-center text-nowrap">
-          <button
+          <!--<button
             class="btn btn-sm btn-outline-primary"
             title="Consultar"
             (click)="Consultar(Item)"
           >
             <i class="fa fa-eye"></i>
-          </button>
+          </button>!-->
           <button
             class="btn btn-sm btn-outline-primary"
             title="Modificar"
@@ -138,6 +138,7 @@
 
   <!-- Registro en Alta,Modificacion y Consulta -->
   <!--Modifique el form y el nombre por titulo-->
+
   <form name="FormLibro" [formGroup]="FormLibro" *ngIf="AccionABMC != 'L'">
     <div class="container-fluid">
       <fieldset [disabled]="AccionABMC === 'C'">

@@ -97,7 +97,7 @@ export class LibrosComponent implements OnInit {
   }
 
   // Obtengo un registro especifico según el Id
-  BuscarPorId(Item, AccionABMC) {
+  /*BuscarPorId(Item, AccionABMC) {
     window.scroll(0, 0); // ir al incio del scroll
 
     //Modifique
@@ -106,11 +106,11 @@ export class LibrosComponent implements OnInit {
 
       this.AccionABMC = AccionABMC;
     });
-  }
+  }*/
 
-  Consultar(Item) {
+  /*Consultar(Item) {
     this.BuscarPorId(Item, 'C');
-  }
+  }*/
 
   // comienza la modificacion, luego la confirma con el metodo Grabar
   Modificar(Item) {
@@ -120,9 +120,11 @@ export class LibrosComponent implements OnInit {
     //);
     //return;
     //}
+    this.AccionABMC = 'M';
     this.submitted = true;
     this.FormLibro.markAsUntouched();
-    this.BuscarPorId(Item, 'M');
+    //this.BuscarPorId(Item, 'M');
+    this.FormLibro.patchValue(Item);
   }
 
   // grabar tanto altas como modificaciones
