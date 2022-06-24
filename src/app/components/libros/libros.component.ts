@@ -139,20 +139,15 @@ export class LibrosComponent implements OnInit {
     const itemCopy = { ...this.FormLibro.value };
     //Agregar esto!!!!!
     itemCopy.IdLibro = 0;
+    
 
-    //convertir fecha de string dd/MM/yyyy a ISO para que la entienda webapi
-    var arrFecha = itemCopy.FechaAlta.substr(0, 10).split('/');
-    if (arrFecha.length == 3)
-      itemCopy.FechaAlta = new Date(
-        arrFecha[2],
-        arrFecha[1] - 1,
-        arrFecha[0]
-      ).toISOString();
+    
+    
 
     // agregar post
     if (this.AccionABMC == 'A') {
       //Modifique
-      this.LibrosService.post(itemCopy).subscribe((res: any) => {
+      this.LibrosService.post(this.FormLibro.value).subscribe((res: any) => {
         this.Volver();
         this.modalDialogService.Alert('Registro agregado correctamente.');
         this.Buscar();
@@ -160,7 +155,7 @@ export class LibrosComponent implements OnInit {
     } else {
       // modificar put
       //Modifique
-      this.LibrosService.put(itemCopy.IdLibro, itemCopy).subscribe(
+      this.LibrosService.put(this.FormLibro.value.IdLibro, this.FormLibro.value).subscribe(
         (res: any) => {
           this.Volver();
           this.modalDialogService.Alert('Registro modificado correctamente.');
