@@ -74,7 +74,7 @@ export class LibrosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.Buscar()
+    this.Buscar();
   }
 
   Agregar() {
@@ -89,11 +89,10 @@ export class LibrosComponent implements OnInit {
     //Modifique
     this.LibrosService.get(
       //Modifique
-      this.FormBusqueda.value.Titulo,
+      this.FormBusqueda.value.Titulo
       //Modifique
     ).subscribe((res: any) => {
       this.Items = res;
-     
     });
   }
 
@@ -105,12 +104,6 @@ export class LibrosComponent implements OnInit {
     this.LibrosService.getById(Item.IdLibro).subscribe((res: any) => {
       this.FormLibro.patchValue(res);
 
-      //formatear fecha de  ISO 8061 a string dd/MM/yyyy
-      var arrFecha = res.FechaAlta.substr(0, 10).split('-');
-      this.FormLibro.controls.FechaAlta.patchValue(
-        arrFecha[2] + '/' + arrFecha[1] + '/' + arrFecha[0]
-      );
-
       this.AccionABMC = AccionABMC;
     });
   }
@@ -121,12 +114,12 @@ export class LibrosComponent implements OnInit {
 
   // comienza la modificacion, luego la confirma con el metodo Grabar
   Modificar(Item) {
-    if (!Item.Activo) {
-      this.modalDialogService.Alert(
-        'No puede modificarse un registro Inactivo.'
-      );
-      return;
-    }
+    //if (!Item.Activo) {
+    //this.modalDialogService.Alert(
+    //'No puede modificarse un registro Inactivo.'
+    //);
+    //return;
+    //}
     this.submitted = true;
     this.FormLibro.markAsUntouched();
     this.BuscarPorId(Item, 'M');
