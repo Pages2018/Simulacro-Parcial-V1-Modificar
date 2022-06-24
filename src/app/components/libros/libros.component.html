@@ -53,6 +53,7 @@
 
 <!-- Tabla de resutados de busqueda y Paginador-->
 <!--Modifique-->
+<div id="divTablaResultados" *ngIf="AccionABMC == 'L' && Items?.length > 0">
 <div class="container-fluid">
 <div class="row">
 
@@ -100,6 +101,7 @@
       </tr>
     </tbody>
   </table>
+</div>
 
   <!-- Paginador
   <div class="paginador">
