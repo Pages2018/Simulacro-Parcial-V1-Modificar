@@ -129,7 +129,7 @@ export class LibrosComponent implements OnInit {
 
   // grabar tanto altas como modificaciones
   Grabar() {
-    this.submitted = false;
+    this.submitted = true;
     // verificar que los validadores esten OK
     if (this.FormLibro.invalid) {
       return;
